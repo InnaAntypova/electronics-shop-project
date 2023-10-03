@@ -3,10 +3,19 @@
 import pytest
 from src.item import Item
 
+
 @pytest.fixture
 def get_item():
     item1 = Item("Смартфон", 10000, 20)
     return item1
+
+
+def test_repr(get_item):
+    assert get_item.__repr__() == "Item('Смартфон', 10000, 20)"
+
+
+def test_srt(get_item):
+    assert get_item.__str__() == 'Смартфон'
 
 
 def test_calculate_total_price(get_item):

@@ -23,6 +23,14 @@ class Item:
         # Добавляем при инициализации экземпляр класса в список
         self.all.append(self)
 
+    def __repr__(self) -> str:
+        """ Возвращает строку с отладочной информацией об экземпляре класса"""
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        """ Возвращает строку с информацией об экземпляре класса для пользователя"""
+        return f"{self.__name}"
+
     @property
     def name(self):
         """
@@ -71,7 +79,6 @@ class Item:
                 items.append(item)
             cls.all = items
 
-
     @staticmethod
     def string_to_number(str_number: str) -> int:
         """
@@ -79,4 +86,3 @@ class Item:
         """
         number = str_number.split('.')
         return int(number[0])
-

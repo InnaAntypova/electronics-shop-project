@@ -63,6 +63,12 @@ class Item:
         self.price = self.price * self.pay_rate
         return self.price
 
+    def __add__(self, other: int) -> int:
+        """ Метод складывает параметр quantity в двух классах"""
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        raise TypeError("Не верный тип данных")
+
     @classmethod
     def instantiate_from_csv(cls, filename):
         """

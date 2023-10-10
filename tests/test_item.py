@@ -2,6 +2,7 @@
 
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
@@ -40,3 +41,9 @@ def test_name(get_item):
 def test_string_to_number():
     assert Item.string_to_number('55.05') == 55
     assert Item.string_to_number('55') == 55
+
+
+def test_add():
+    item1 = Item("Смартфон", 10000, 20)
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    assert item1 + phone1 == 25

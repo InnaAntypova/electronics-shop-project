@@ -41,4 +41,4 @@ class Keyboard(Item, MixinLanguage):
 
     def __str__(self):
         """ Возвращает строку с информацией об экземпляре класса для пользователя"""
-        return f"{self.__name}"
+        return f"{self.name}"

@@ -1,4 +1,5 @@
 import csv
+from src.ExeptionsErrors import InstantiateCSVError
 
 
 class Item:
@@ -74,16 +75,29 @@ class Item:
         """
         Открывает файл в формате csv и создает из его данных экземпляры класса
         """
-        with open(filename, newline='') as file:
-            reader = csv.DictReader(file)
-            items = []
-            for i in reader:
-                name = str(i['name'])
-                price = float(i['price'])
-                quantity = int(i['quantity'])
-                item = cls(name, price, quantity)
-                items.append(item)
-            cls.all = items
+        try:
+            with open(filename, newline='') as file:
+                reader = csv.DictReader(file)
+
+                if len(reader.fieldnames) != 3:
+                    raise InstantiateCSVError
+
+                items = []
+                for i in reader:
+                    name = str(i['name'])
+                    price = float(i['price'])
+                    quantity = int(i['quantity'])
+                    item = cls(name, price, quantity)
+                    items.append(item)
+                cls.all = items
+
+        except FileNotFoundError:
+            print(f"Отсутствует файл {filename}.")
+        except InstantiateCSVError:
+            print(f"Файл {filename} поврежден.")
+
+
+
 
     @staticmethod
     def string_to_number(str_number: str) -> int:

@@ -96,9 +96,6 @@ class Item:
         except InstantiateCSVError:
             print(f"Файл {filename} поврежден.")
 
-
-
-
     @staticmethod
     def string_to_number(str_number: str) -> int:
         """

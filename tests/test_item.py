@@ -61,4 +61,4 @@ def test_instantiate_from_csv2():
     """ Повреждение файла"""
     with pytest.raises(InstantiateCSVError):
         Item.instantiate_from_csv('../tests/test_item.csv')
-        assert "Файл ../tests/test_item.csv поврежден."
+        assert "Файл поврежден."

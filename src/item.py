@@ -92,9 +92,9 @@ class Item:
                 cls.all = items
 
         except FileNotFoundError:
-            print(f"Отсутствует файл {filename}.")
+            raise FileNotFoundError(f"Отсутствует файл {filename}.")
         except InstantiateCSVError:
-            print(f"Файл {filename} поврежден.")
+            raise InstantiateCSVError
 
     @staticmethod
     def string_to_number(str_number: str) -> int:
